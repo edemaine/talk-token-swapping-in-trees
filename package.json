@@ -9,6 +9,7 @@
   "author": "Erik Demaine",
   "license": "MIT",
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.16",
     "reveal.js": "^4.1.1"
   },
   "devDependencies": {

@@ -1,7 +1,8 @@
-html
+html(nighteye="disabled")
   head
     script(src="node_modules/reveal.js/dist/reveal.js")
     //-script(src="node_modules/reveal.js/plugin/markdown/markdown.js")
+    script(src="node_modules/@svgdotjs/svg.js/dist/svg.js")
     link(rel="stylesheet", href="node_modules/reveal.js/dist/reveal.css")
     link(rel="stylesheet", href="node_modules/reveal.js/dist/theme/black.css")
     link(rel="preconnect" href="https://fonts.gstatic.com")
@@ -19,3 +20,4 @@ html
           slideNumber: true
           hash: true
           #plugins: [RevealMarkdown]
+      include:coffee-script tokenswap.coffee
