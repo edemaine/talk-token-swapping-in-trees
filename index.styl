@@ -3,7 +3,8 @@
   --heading-font: Merriweather, serif
 .reveal
   font-family: var(--main-font)
-.reveal
+  ::selection
+    background: #444
   h1, h2, h3, h4, h5, h6
     font-family: var(--heading-font)
     text-transform: none
@@ -19,7 +20,7 @@
     visibility: inherit
 
 .reveal-viewport
-    background: black
+  background: black
 
 cite
   color: #c0a5c0
