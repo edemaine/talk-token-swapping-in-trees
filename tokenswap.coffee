@@ -1,4 +1,5 @@
-swapDuration = 400
+swapDuration = 500
+swapDelay = 100
 
 ###
 initCircles = ->
@@ -35,7 +36,7 @@ animateSwaps = (swaps, reverse) ->
     centers[j] ?= [tj.cx(), tj.cy()]
     ## Swap
     [centers[i], centers[j]] = [centers[j], centers[i]]
-    ti.animate(swapDuration, swapDuration, 'after').center centers[i]...
+    ti.animate(swapDuration, swapDelay, 'after').center centers[i]...
     tj.animate(swapDuration, -swapDuration, 'after').center centers[j]...
 
 Reveal.on 'fragmentshown', (e) ->

@@ -137,6 +137,7 @@ section
   ul
     li <cite>Akers &amp; Krishnamurthy [1989]</cite> first studied <b>tree</b> version as routing in proposed network topology
     li Three <b>2-approximation</b> algorithms <br> <cite>[Akers &amp; Krishnamurthy 1989; Vaughan 1991; Yamanaka et al. 2015]</cite>
+    li Family of algorithms (including past algorithms) cannot beat $4 \over 3$-approximation <cite>[Biniaz et al. 2019]</cite>
     li <u>OPEN</u>: NP-hard?
     li <u>OPEN</u>: Better approximation?
 
@@ -147,3 +148,49 @@ section
       ul
         li Also for <b>parallel</b> token swapping, where we can swap a matching in each round
     li Family of algorithms (including past algorithms) cannot beat 2-approximation
+
+section
+  h2 Happy Leaf Conjecture
+  ul
+    li <u>Conjecture</u>: <cite>[Vaughan 1991]</cite> Never need to swap a token that's already at destination leaf
+    li.fragment(data-fragment-index="1") <u>Counterexample</u>: <cite>[Biniaz et al. 2019]</cite> <br> (smallest possible)
+  svg.fragment(data-fragment-index="1", viewBox="-10 -10 870 170", style="padding:0.5rem")
+    line(x1="50", y1="25", x2="100", y2="25")
+    line(x1="150", y1="25", x2="200", y2="25")
+    line(x1="250", y1="25", x2="300", y2="25")
+    line(x1="350", y1="25", x2="400", y2="25")
+    line(x1="450", y1="25", x2="500", y2="25")
+    line(x1="550", y1="25", x2="600", y2="25")
+    line(x1="650", y1="25", x2="700", y2="25")
+    line(x1="750", y1="25", x2="800", y2="25")
+    line(x1="225", y1="50", x2="225", y2="100")
+    rect.t1(x="0", y="0", width="50", height="50")
+    rect.t2(x="100", y="0", width="50", height="50")
+    rect.t3(x="200", y="0", width="50", height="50")
+    rect.t4(x="300", y="0", width="50", height="50")
+    rect.t5(x="400", y="0", width="50", height="50")
+    rect.t6(x="500", y="0", width="50", height="50")
+    rect.t7(x="600", y="0", width="50", height="50")
+    rect.t8(x="700", y="0", width="50", height="50")
+    rect.t9(x="800", y="0", width="50", height="50")
+    rect.t10(x="200", y="100", width="50", height="50")
+    circle.t9(cx="25", cy="25", r="16")
+    circle.t8(cx="125", cy="25", r="16")
+    circle.t7(cx="225", cy="25", r="16")
+    circle.t6(cx="325", cy="25", r="16")
+    circle.t5(cx="425", cy="25", r="16")
+    circle.t4(cx="525", cy="25", r="16")
+    circle.t3(cx="625", cy="25", r="16")
+    circle.t2(cx="725", cy="25", r="16")
+    circle.t1(cx="825", cy="25", r="16")
+    circle.t10(cx="225", cy="125", r="16")
+  .tokenswap.fragment(data-swaps="10,7 10,8 10,9")
+  .tokenswap.fragment(data-swaps="9,8 9,6 9,5 9,4 9,3 9,2 9,1")
+  .tokenswap.fragment(data-swaps="8,6 8,5 8,4 8,3 8,2 8,1")
+  .tokenswap.fragment(data-swaps="7,5 7,4 7,3 7,2 7,1")
+  .tokenswap.fragment(data-swaps="6,4 6,3 6,2 6,1")
+  .tokenswap.fragment(data-swaps="5,3 5,2 5,1")
+  .tokenswap.fragment(data-swaps="4,2 4,1")
+  .tokenswap.fragment(data-swaps="1,2 1,10 2,10 3,10")
+  ul
+    li.fragment Any algorithm satisfying conjecture cannot beat $4 \over 3$-approximation <cite>[Biniaz et al. 2019]</cite>
