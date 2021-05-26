@@ -6,3 +6,50 @@
 .reveal
   h1, h2, h3, h4, h5, h6
     font-family: var(--heading-font)
+    text-transform: none
+    font-variant: small-caps
+
+.reveal .slides section .fragment
+  opacity: 0
+  visibility: hidden
+  transition: all 1s ease
+  will-change: initial
+  &.visible
+    opacity: 1
+    visibility: inherit
+
+// Rainbow palette from https://loading.io/color/feature/Rainbow/
+.t1
+  fill: #cd3c37
+.t2
+  fill: #d27d4b
+.t3
+  fill: #664b00
+.t4
+  fill: #a1d454
+.t5
+  fill: #50d39a
+.t6
+  fill: #47b1d1
+.t7
+  fill: #4b5bd2
+.t8
+  fill: #c450d3
+
+circle
+  stroke: black
+  stroke-width: 3px
+rect
+  stroke: white
+  stroke-width: 3px
+  fill: #aaa
+line
+  stroke: white
+  stroke-width: 10px
+  stroke-linecap: square
+circle
+  filter: drop-shadow(2px 2px 2px #444)
+rect
+  filter: drop-shadow(0px 0px 4px #bbb)
+line
+  filter: drop-shadow(0px 0px 4px #bbb)

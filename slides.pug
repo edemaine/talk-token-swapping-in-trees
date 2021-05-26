@@ -1,12 +1,40 @@
 section
   :markdown-it
-    # Slide 1
+    # TITLE
 section
-  :markdown-it
-    # Slide 2
-//- Alternate approach using RevealMarkdown plugin:
-  section(data-markdown="")
-    textarea(data-template="").
-      # Slide 1
-      ---
-      # Slide 2
+  h2 Token Swapping Problem
+  ul
+    li Given a <b>graph</b>
+    ul
+      li.fragment(data-fragment-index="1") with one <b>token</b> per vertex
+      li.fragment(data-fragment-index="2") and a <b>destination</b> for each token
+    li.fragment How many <b>swaps</b> along edges do we need?
+  svg.r-stretch(viewBox="-10 -10 270 170", style="padding:0.5rem")
+    defs
+      filter#shadow
+        feDropShadow(dx="0", dy="0", stdDeviation="0.5", flood-color="#bbb")
+    line(x1="50", y1="25", x2="100", y2="25")
+    line(x1="150", y1="25", x2="200", y2="25")
+    line(x1="25", y1="50", x2="25", y2="100")
+    line(x1="225", y1="50", x2="225", y2="100")
+    line(x1="200", y1="50", x2="150", y2="100")
+    line(x1="50", y1="125", x2="100", y2="125")
+    line(x1="150", y1="125", x2="200", y2="125")
+    rect(x="0", y="0", width="50", height="50")
+    rect(x="100", y="0", width="50", height="50")
+    rect(x="200", y="0", width="50", height="50")
+    rect(x="0", y="100", width="50", height="50")
+    rect(x="100", y="100", width="50", height="50")
+    rect(x="200", y="100", width="50", height="50")
+    rect.t1.fragment(data-fragment-index="2", x="0", y="0", width="50", height="50")
+    rect.t2.fragment(data-fragment-index="2", x="100", y="0", width="50", height="50")
+    rect.t3.fragment(data-fragment-index="2", x="200", y="0", width="50", height="50")
+    rect.t4.fragment(data-fragment-index="2", x="0", y="100", width="50", height="50")
+    rect.t5.fragment(data-fragment-index="2", x="100", y="100", width="50", height="50")
+    rect.t6.fragment(data-fragment-index="2", x="200", y="100", width="50", height="50")
+    circle.t4.fragment(data-fragment-index="1", cx="25", cy="25", r="16")
+    circle.t2.fragment(data-fragment-index="1", cx="125", cy="25", r="16")
+    circle.t6.fragment(data-fragment-index="1", cx="225", cy="25", r="16")
+    circle.t5.fragment(data-fragment-index="1", cx="25", cy="125", r="16")
+    circle.t1.fragment(data-fragment-index="1", cx="125", cy="125", r="16")
+    circle.t3.fragment(data-fragment-index="1", cx="225", cy="125", r="16")
