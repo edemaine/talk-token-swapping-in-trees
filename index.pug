@@ -1,0 +1,19 @@
+html
+  head
+    script(src="node_modules/reveal.js/dist/reveal.js")
+    //-script(src="node_modules/reveal.js/plugin/markdown/markdown.js")
+    link(rel="stylesheet", href="node_modules/reveal.js/dist/reveal.css")
+    link(rel="stylesheet", href="node_modules/reveal.js/dist/theme/black.css")
+    style
+      include:stylus index.styl
+  body
+    .reveal
+      .slides
+        include slides.pug
+    script
+      :coffee-script
+        Reveal.initialize
+          center: false
+          slideNumber: true
+          hash: true
+          #plugins: [RevealMarkdown]
