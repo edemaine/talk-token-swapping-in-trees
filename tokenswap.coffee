@@ -9,11 +9,14 @@ initCircles = ->
     elt.setAttribute 'data-cy', elt.getAttribute 'cy'
 ###
 
+timeline = null
+
 animateSwaps = (swaps, reverse) ->
   #initCircles()
   swaps = swaps.split /\s+/
   swaps.reverse() if reverse
   centers = {}
+  timeline?.finish()
   timeline = new SVG.Timeline
   for swap, count in swaps
     continue unless swap
