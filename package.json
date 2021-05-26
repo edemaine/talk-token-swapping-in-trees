@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "@svgdotjs/svg.js": "^3.0.16",
+    "katex": "^0.13.11",
     "reveal.js": "^4.1.1"
   },
   "devDependencies": {

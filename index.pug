@@ -1,12 +1,16 @@
+doctype html
 html(nighteye="disabled")
   head
     script(src="node_modules/reveal.js/dist/reveal.js")
     //-script(src="node_modules/reveal.js/plugin/markdown/markdown.js")
     script(src="node_modules/@svgdotjs/svg.js/dist/svg.js")
+    script(src="node_modules/katex/dist/katex.js")
+    script(src="node_modules/katex/dist/contrib/auto-render.js")
     link(rel="stylesheet", href="node_modules/reveal.js/dist/reveal.css")
     link(rel="stylesheet", href="node_modules/reveal.js/dist/theme/black.css")
     link(rel="preconnect" href="https://fonts.gstatic.com")
     link(href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,900;1,400;1,900&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="node_modules/katex/dist/katex.css")
     style
       include:stylus index.styl
   body
@@ -20,5 +24,12 @@ html(nighteye="disabled")
           slideNumber: true
           hash: true
           transition: 'none'
+          width: 1100
+          height: 768
           #plugins: [RevealMarkdown]
+        renderMathInElement document.body,
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false},
+          ]
       include:coffee-script tokenswap.coffee

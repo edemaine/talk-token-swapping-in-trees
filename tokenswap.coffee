@@ -26,8 +26,8 @@ animateSwaps = (swaps, reverse) ->
     if isNaN(i) or isNaN(j)
       console.warn "Invalid swap #{swap}"
       continue
-    ti = SVG "circle.t#{i}"
-    tj = SVG "circle.t#{j}"
+    ti = SVG "section.present circle.t#{i}"
+    tj = SVG "section.present circle.t#{j}"
     continue unless ti? and tj?
     ti.timeline timeline
     tj.timeline timeline

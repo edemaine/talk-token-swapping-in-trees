@@ -1,6 +1,7 @@
 section
   :markdown-it
     # TITLE
+
 section
   h2 Token Swapping Problem
   ul
@@ -10,9 +11,6 @@ section
       li.fragment(data-fragment-index="2") and a <b>destination</b> for each token
     li.fragment How many <b>swaps</b> along edges do we need?
   svg.r-stretch(viewBox="-10 -10 270 170", style="padding:0.5rem")
-    defs
-      filter#shadow
-        feDropShadow(dx="0", dy="0", stdDeviation="0.5", flood-color="#bbb")
     line(x1="50", y1="25", x2="100", y2="25")
     line(x1="150", y1="25", x2="200", y2="25")
     line(x1="25", y1="50", x2="25", y2="100")
@@ -42,5 +40,110 @@ section
   .tokenswap.fragment(data-swaps="3,6")
   .tokenswap.fragment(data-swaps="1,5")
   .tokenswap.fragment(data-swaps="1,4")
+
 section
-  h1 hi
+  h2 Cayley Graph View
+  table.side-by-side
+    tr
+      td &bull; Positions of tokens
+      td &bull; Permutation in $S_n$
+    tr
+      td &bull; Graph edge
+      td &bull; Transposition (swap)
+    tr
+      td &bull; Configuration space
+      td &bull; Cayley graph
+    tr
+      td &bull; Reconfiguration
+      td &bull; Path in Cayley graph
+    tr.r-stretch
+      td
+        svg(viewBox="-10 -10 370 70")
+          line(x1="50", y1="25", x2="100", y2="25",  style="stroke:#ffff00")
+          line(x1="150", y1="25", x2="200", y2="25", style="stroke:#ff48fa")
+          line(x1="250", y1="25", x2="300", y2="25", style="stroke:#23fefa")
+          rect(x="0", y="0", width="50", height="50")
+          rect(x="100", y="0", width="50", height="50")
+          rect(x="200", y="0", width="50", height="50")
+          rect(x="300", y="0", width="50", height="50")
+          circle(cx="25", cy="25", r="16")
+          circle(cx="125", cy="25", r="16")
+          circle(cx="225", cy="25", r="16")
+          circle(cx="325", cy="25", r="16")
+      td(style="text-align: center")
+        img(src="cayley4.png", style="height:400px; margin: 0; filter: invert(1)")
+        a.url(href="https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png") https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png
+
+  //-
+    ul
+      li Token positions form a <b>permutation</b> in symmetric group $S_n$
+      li Each edge defines <b>transposition</b> (1-swap) generator
+      li <b>Cayley graph</b> represents space of permutations
+
+section
+  h2 Connection to Bubble Sort
+  table.side-by-side
+    tr
+      td Path graph
+      td Sorting by swapping adjacent elements
+    tr
+      td Min number of swaps
+      td Number of inversions / cost of bubble sort
+  svg.r-stretch(viewBox="-10 -10 370 70", style="padding:0.5rem")
+    line(x1="50", y1="25", x2="100", y2="25")
+    line(x1="150", y1="25", x2="200", y2="25")
+    line(x1="250", y1="25", x2="300", y2="25")
+    rect.t1(x="0", y="0", width="50", height="50")
+    rect.t2(x="100", y="0", width="50", height="50")
+    rect.t3(x="200", y="0", width="50", height="50")
+    rect.t4(x="300", y="0", width="50", height="50")
+    circle.t4(cx="25", cy="25", r="16")
+    circle.t3(cx="125", cy="25", r="16")
+    circle.t2(cx="225", cy="25", r="16")
+    circle.t1(cx="325", cy="25", r="16")
+  .tokenswap.fragment(data-fragment-index="1", data-swaps="4,3 4,2 4,1 3,2 3,1 2,1")
+
+//- Clique
+  svg(viewBox="-10 -10 170 170", style="padding:0.5rem")
+    line(x1="50", y1="25", x2="100", y2="25")
+    line(x1="50", y1="125", x2="100", y2="125")
+    line(x1="25", y1="50", x2="25", y2="100")
+    line(x1="125", y1="50", x2="125", y2="100")
+    line(x1="50", y1="50", x2="100", y2="100")
+    line(x1="50", y1="100", x2="100", y2="50")
+    rect(x="0", y="0", width="50", height="50")
+    rect(x="100", y="0", width="50", height="50")
+    rect(x="0", y="100", width="50", height="50")
+    rect(x="100", y="100", width="50", height="50")
+    circle.t1(cx="25", cy="25", r="16")
+    circle.t3(cx="125", cy="25", r="16")
+    circle.t5(cx="25", cy="125", r="16")
+    circle.t7(cx="125", cy="125", r="16")
+
+section
+  h2 History
+  ul
+    li Studied in discrete mathematics, theoretical computer science, network engineering, robot motion planning, game theory
+    li <cite>Cayley [1849]</cite> solved <b>clique</b> version
+    li <cite>Knuth [1968]</cite> solved <b>path</b> version
+    //- li <cite>Akers &amp; Krishnamurthy [1989]</cite> introduced as "sorting with a transposition graph" for routing in proposed network topology
+    li Also solved for cycles, stars, brooms, bicliques <!--, complete split graphs-->
+    li <b>NP-complete</b> <cite>[Amir &amp; Porat 2015]</cite>
+    li <b>APX-complete</b> with <b>4-approximation</b> <br> <cite>[Miltzow et al. 2016]</cite>
+    li <b>W[1]-hard</b> with respect to number of swaps <cite>[Bonnet et al. 2018]</cite>
+
+section
+  h2 History: Trees
+  ul
+    li <cite>Akers &amp; Krishnamurthy [1989]</cite> first studied <b>tree</b> version as routing in proposed network topology
+    li Three <b>2-approximation</b> algorithms <br> <cite>[Akers &amp; Krishnamurthy 1989; Vaughan 1991; Yamanaka et al. 2015]</cite>
+    li <u>OPEN</u>: NP-hard?
+    li <u>OPEN</u>: Better approximation?
+
+section
+  h2 Our Results
+  ul
+    li Token swapping is <b>NP-hard on trees</b>
+      ul
+        li Also for <b>parallel</b> token swapping, where we can swap a matching in each round
+    li Family of algorithms (including past algorithms) cannot beat 2-approximation
