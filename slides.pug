@@ -117,10 +117,10 @@ section
   table.side-by-side
     tr
       td Path graph
-      td Sorting by swapping adjacent elements
+      td Sorting by swapping <b>adjacent</b> elements
     tr
       td Min number of swaps
-      td Number of inversions / cost of bubble sort
+      td Number of <b>inversions</b> / cost of <b>bubble sort</b>
   svg.r-stretch(viewBox="-10 -10 370 70", style="padding:0.5rem")
     line(x1="50", y1="25", x2="100", y2="25")
     line(x1="150", y1="25", x2="200", y2="25")
@@ -160,6 +160,7 @@ section
     li <cite>Knuth [1968]</cite> solved <b>path</b> version
     //- li <cite>Akers &amp; Krishnamurthy [1989]</cite> introduced as "sorting with a transposition graph" for routing in proposed network topology
     li Also solved for cycles, stars, brooms, bicliques <!--, complete split graphs-->
+  ul.fragment
     li <b>NP-complete</b> <cite>[Amir &amp; Porat 2015]</cite>
     li <b>APX-complete</b> with <b>4-approximation</b> <br> <cite>[Miltzow et al. 2016]</cite>
     li <b>W[1]-hard</b> with respect to number of swaps <cite>[Bonnet et al. 2018]</cite>
