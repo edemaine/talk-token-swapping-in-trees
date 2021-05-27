@@ -1,3 +1,4 @@
+// Customize RevealJS font and related features
 :root
   --main-font: Merriweather, serif
   --heading-font: Merriweather, serif
@@ -23,10 +24,11 @@
 // Full black background
 .reveal-viewport
   background: black
-// For debugging slide size
+// For debugging slide size, uncomment the following:
 .reveal .slides section
   //background: #111
 
+// Formatting tools specific to this presentation
 cite
   color: #c0a5c0
 table.side-by-side
@@ -46,7 +48,8 @@ table.compact
 .sep
   color: #9a5b9a
 
-// Rainbow palette from https://loading.io/color/feature/Rainbow/
+// Token colors.  Originally based on rainbow palette from
+// https://loading.io/color/feature/Rainbow/, but modified for one more color.
 .t1
   fill: #e6261f
 .t2
@@ -67,18 +70,20 @@ table.compact
 .t9
   fill: #e634d0
 
-circle
+// SVG styling
+circle  // token
   stroke: black
   stroke-width: 3px
   fill: #aaa
-rect
+rect  // graph node
   stroke: white
   stroke-width: 3px
   fill: #aaa
-line
+line  // graph edge
   stroke: white
   stroke-width: 10px
   stroke-linecap: square
+// Glows and drop shadow effects
 circle
   filter: drop-shadow(0px 0px 3px #000)
 rect
