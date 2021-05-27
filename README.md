@@ -67,3 +67,16 @@ and update, use the following command:
 ```sh
 npm run watch
 ```
+
+To assemble just the needed files into a `dist` directory,
+use the following command:
+
+```sh
+npm run dist
+```
+
+To deploy these files to GitHub Pages, use the following command:
+
+```sh
+npm run deploy
+```

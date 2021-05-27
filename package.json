@@ -4,7 +4,9 @@
   "description": "Reveal.js slides using Pug templating with Stylus and CoffeeScript filters",
   "scripts": {
     "build": "gulp",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "dist": "gulp dist",
+    "deploy": "gulp deploy"
   },
   "author": "Erik Demaine",
   "license": "MIT",
@@ -19,6 +21,7 @@
     "gulp": "^4.0.2",
     "gulp-chmod": "^3.0.0",
     "gulp-coffee": "^3.0.3",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-pug": "^4.0.1",
     "jstransformer-coffee-script": "^1.1.1",
     "jstransformer-markdown-it": "^2.1.0",
