@@ -46,6 +46,7 @@ Here's an overview of the individual files and what they do:
 * [`index.styl`](index.styl): Some custom RevealJS styling,
   and specific SVG styling for the figures and animations.
   (Check out the cool glow/shadow effects!)
+* [`cayley4.png`](cayley4.png): [Image from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png), licensed under CC-BY-SA
 
 ## Build Instructions
 
