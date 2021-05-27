@@ -6,6 +6,10 @@ by Oswin Aichholzer, Erik Demaine, Matias Korman, Jayson Lynch, Anna Lubiw,
 Zuzana Mas, Mikhail Rudoy, Virginia Vassilevska Williams, and Nicole Wein.
 See the paper for more details about the results.
 
+## [View Slides](https://edemaine.github.io/talk-token-swapping-in-trees/)
+
+[![Title slide](title_slide.jpg)](https://edemaine.github.io/talk-token-swapping-in-trees/)
+
 ## Technology
 
 This repository serves as a demo of an approach to making slides
