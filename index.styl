@@ -10,6 +10,7 @@
     text-transform: none
     //font-variant: small-caps
 
+// Extend fragment animations to 1 second
 .reveal .slides section .fragment
   opacity: 0
   visibility: hidden
@@ -19,8 +20,12 @@
     opacity: 1
     visibility: inherit
 
+// Full black background
 .reveal-viewport
   background: black
+// For debugging slide size
+.reveal .slides section
+  //background: #111
 
 cite
   color: #c0a5c0
@@ -28,6 +33,9 @@ table.side-by-side
   table-layout: fixed
   td
     width: 50%
+table.compact
+  td, th
+    padding: 0 0.5em
 
 .invert
   filter: invert(1) hue-rotate(180deg)
