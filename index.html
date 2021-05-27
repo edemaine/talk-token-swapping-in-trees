@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html nighteye="disabled">
+  <head>
+    <meta charset="utf8">
+    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="node_modules/reveal.js-plugins/chalkboard/plugin.js"></script>
+    <script src="node_modules/@svgdotjs/svg.js/dist/svg.min.js"></script>
+    <script src="node_modules/katex/dist/katex.min.js"></script>
+    <script src="node_modules/katex/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css">
+    <link rel="stylesheet" href="node_modules/reveal.js-plugins/chalkboard/palette.css">
+    <link rel="stylesheet" href="node_modules/reveal.js-plugins/menu/font-awesome/css/all.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,900;1,400;1,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/katex/dist/katex.css">
+    <style>:root {
+  --main-font: Merriweather, serif;
+  --heading-font: Merriweather, serif;
+}
+.reveal {
+  font-family: var(--main-font);
+}
+.reveal ::selection {
+  background: #444;
+}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--heading-font);
+  text-transform: none;
+}
+.reveal .slides section .fragment {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s ease;
+  will-change: initial;
+}
+.reveal .slides section .fragment.visible {
+  opacity: 1;
+  visibility: inherit;
+}
+.reveal-viewport {
+  background: #000;
+}
+cite {
+  color: #c0a5c0;
+}
+table.side-by-side {
+  table-layout: fixed;
+}
+table.side-by-side td {
+  width: 50%;
+}
+table.compact td,
+table.compact th {
+  padding: 0 0.5em;
+}
+.invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+.url {
+  display: block;
+  font-size: 30%;
+  font-family: monospace;
+}
+.sep {
+  color: #9a5b9a;
+}
+.t1 {
+  fill: #e6261f;
+}
+.t2 {
+  fill: #eb7532;
+}
+.t3 {
+  fill: #f7d038;
+}
+.t4 {
+  fill: #a3e048;
+}
+.t5 {
+  fill: #49da9a;
+}
+.t6 {
+  fill: #34bbe6;
+}
+.t7 {
+  fill: #4355db;
+}
+.t8 {
+  fill: #9f3be7;
+}
+.t9 {
+  fill: #e634d0;
+}
+circle {
+  stroke: #000;
+  stroke-width: 3px;
+  fill: #aaa;
+}
+rect {
+  stroke: #fff;
+  stroke-width: 3px;
+  fill: #aaa;
+}
+line {
+  stroke: #fff;
+  stroke-width: 10px;
+  stroke-linecap: square;
+}
+circle {
+  filter: drop-shadow(0px 0px 3px #000);
+}
+rect {
+  filter: drop-shadow(0px 0px 4px #bbb);
+}
+line {
+  filter: drop-shadow(0px 0px 4px #bbb);
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 style="font-variant: small-caps">Hardness of Token Swapping on Trees</h1>
+          <hr>
+          <h4>Oswin&nbsp;Aichholzer <span class="sep">&bull;</span> <u>Erik&nbsp;Demaine</u> <span class="sep">&bull;</span> Matias&nbsp;Korman <span class="sep">&bull;</span> Jayson&nbsp;Lynch <span class="sep">&bull;</span> Anna&nbsp;Lubiw <span class="sep">&bull;</span> Zuzana&nbsp;Masárová <span class="sep">&bull;</span> Mikhail&nbsp;Rudoy <span class="sep">&bull;</span> Virginia&nbsp;Vassilevska&nbsp;Williams <span class="sep">&bull;</span> <u>Nicole&nbsp;Wein</u></h4>
+          <svg viewBox="-10 -10 870 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="25"></line>
+            <line x1="150" y1="25" x2="200" y2="25"></line>
+            <line x1="250" y1="25" x2="300" y2="25"></line>
+            <line x1="350" y1="25" x2="400" y2="25"></line>
+            <line x1="450" y1="25" x2="500" y2="25"></line>
+            <line x1="550" y1="25" x2="600" y2="25"></line>
+            <line x1="650" y1="25" x2="700" y2="25"></line>
+            <line x1="750" y1="25" x2="800" y2="25"></line>
+            <line x1="225" y1="50" x2="225" y2="100"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="100" y="0" width="50" height="50"></rect>
+            <rect class="t3" x="200" y="0" width="50" height="50"></rect>
+            <rect class="t4" x="300" y="0" width="50" height="50"></rect>
+            <rect class="t5" x="400" y="0" width="50" height="50"></rect>
+            <rect class="t6" x="500" y="0" width="50" height="50"></rect>
+            <rect class="t7" x="600" y="0" width="50" height="50"></rect>
+            <rect class="t8" x="700" y="0" width="50" height="50"></rect>
+            <rect class="t9" x="800" y="0" width="50" height="50"></rect>
+            <rect class="t10" x="200" y="100" width="50" height="50"></rect>
+            <circle class="t9" cx="25" cy="25" r="16"></circle>
+            <circle class="t8" cx="125" cy="25" r="16"></circle>
+            <circle class="t7" cx="225" cy="25" r="16"></circle>
+            <circle class="t6" cx="325" cy="25" r="16"></circle>
+            <circle class="t5" cx="425" cy="25" r="16"></circle>
+            <circle class="t4" cx="525" cy="25" r="16"></circle>
+            <circle class="t3" cx="625" cy="25" r="16"></circle>
+            <circle class="t2" cx="725" cy="25" r="16"></circle>
+            <circle class="t1" cx="825" cy="25" r="16"></circle>
+            <circle class="t10" cx="225" cy="125" r="16"></circle>
+          </svg>
+          <div class="tokenswap fragment" data-swaps="10,7 10,8 10,9 9,8 9,6 9,5 9,4 9,3 9,2 9,1 8,6 8,5 8,4 8,3 8,2 8,1 7,5 7,4 7,3 7,2 7,1 6,4 6,3 6,2 6,1 5,3 5,2 5,1 4,2 4,1 1,2 1,10 2,10 3,10"></div>
+        </section>
+        <section>
+          <h2>Token Swapping Problem</h2>
+          <ul>
+            <li>Given a <b>graph</b></li>
+            <ul>
+              <li class="fragment" data-fragment-index="1">with one <b>token</b> per vertex</li>
+              <li class="fragment" data-fragment-index="2">and a <b>destination</b> for each token</li>
+            </ul>
+            <li class="fragment">How many <b>swaps</b> along edges do we need?</li>
+          </ul>
+          <svg class="r-stretch" viewBox="-10 -10 270 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="25"></line>
+            <line x1="150" y1="25" x2="200" y2="25"></line>
+            <line x1="25" y1="50" x2="25" y2="100"></line>
+            <line x1="225" y1="50" x2="225" y2="100"></line>
+            <line x1="200" y1="50" x2="150" y2="100"></line>
+            <line x1="50" y1="125" x2="100" y2="125"></line>
+            <line x1="150" y1="125" x2="200" y2="125"></line>
+            <rect x="0" y="0" width="50" height="50"></rect>
+            <rect x="100" y="0" width="50" height="50"></rect>
+            <rect x="200" y="0" width="50" height="50"></rect>
+            <rect x="0" y="100" width="50" height="50"></rect>
+            <rect x="100" y="100" width="50" height="50"></rect>
+            <rect x="200" y="100" width="50" height="50"></rect>
+            <rect class="t1 fragment" data-fragment-index="2" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2 fragment" data-fragment-index="2" x="100" y="0" width="50" height="50"></rect>
+            <rect class="t3 fragment" data-fragment-index="2" x="200" y="0" width="50" height="50"></rect>
+            <rect class="t4 fragment" data-fragment-index="2" x="0" y="100" width="50" height="50"></rect>
+            <rect class="t5 fragment" data-fragment-index="2" x="100" y="100" width="50" height="50"></rect>
+            <rect class="t6 fragment" data-fragment-index="2" x="200" y="100" width="50" height="50"></rect>
+            <circle class="t4 fragment" data-fragment-index="1" cx="25" cy="25" r="16"></circle>
+            <circle class="t2 fragment" data-fragment-index="1" cx="125" cy="25" r="16"></circle>
+            <circle class="t6 fragment" data-fragment-index="1" cx="225" cy="25" r="16"></circle>
+            <circle class="t5 fragment" data-fragment-index="1" cx="25" cy="125" r="16"></circle>
+            <circle class="t1 fragment" data-fragment-index="1" cx="125" cy="125" r="16"></circle>
+            <circle class="t3 fragment" data-fragment-index="1" cx="225" cy="125" r="16"></circle>
+          </svg>
+          <div class="tokenswap fragment" data-swaps="3,6"></div>
+          <div class="tokenswap fragment" data-swaps="1,5"></div>
+          <div class="tokenswap fragment" data-swaps="1,4"></div>
+        </section>
+        <section>
+          <h2>Cayley Graph View</h2>
+          <table class="side-by-side compact">
+            <tr>
+              <td>&bull; Positions of tokens</td>
+              <td>&bull; Permutation in $S_n$</td>
+            </tr>
+            <tr>
+              <td>&bull; Graph edge</td>
+              <td>&bull; Transposition (swap)</td>
+            </tr>
+            <tr>
+              <td>&bull; Configuration space</td>
+              <td>&bull; Cayley graph</td>
+            </tr>
+            <tr>
+              <td>&bull; Reconfiguration</td>
+              <td>&bull; Path in Cayley graph</td>
+            </tr>
+            <tr class="r-stretch">
+              <td>
+                <svg viewBox="-10 -10 370 70">
+                  <line x1="50" y1="25" x2="100" y2="25" style="stroke:#ffff00"></line>
+                  <line x1="150" y1="25" x2="200" y2="25" style="stroke:#ff48fa"></line>
+                  <line x1="250" y1="25" x2="300" y2="25" style="stroke:#23fefa"></line>
+                  <rect x="0" y="0" width="50" height="50"></rect>
+                  <rect x="100" y="0" width="50" height="50"></rect>
+                  <rect x="200" y="0" width="50" height="50"></rect>
+                  <rect x="300" y="0" width="50" height="50"></rect>
+                  <circle cx="25" cy="25" r="16"></circle>
+                  <circle cx="125" cy="25" r="16"></circle>
+                  <circle cx="225" cy="25" r="16"></circle>
+                  <circle cx="325" cy="25" r="16"></circle>
+                </svg>
+              </td>
+              <td style="text-align: center"><img src="cayley4.png" style="height:400px; margin: 0; filter: invert(1)"><a class="url" href="https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png">https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png</a></td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h2>Connection to Bubble Sort</h2>
+          <table class="side-by-side">
+            <tr>
+              <td>Path graph</td>
+              <td>Sorting by swapping <b>adjacent</b> elements</td>
+            </tr>
+            <tr>
+              <td>Min number of swaps</td>
+              <td>Number of <b>inversions</b> / cost of <b>bubble sort</b></td>
+            </tr>
+          </table>
+          <svg class="r-stretch" viewBox="-10 -10 370 70" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="25"></line>
+            <line x1="150" y1="25" x2="200" y2="25"></line>
+            <line x1="250" y1="25" x2="300" y2="25"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="100" y="0" width="50" height="50"></rect>
+            <rect class="t3" x="200" y="0" width="50" height="50"></rect>
+            <rect class="t4" x="300" y="0" width="50" height="50"></rect>
+            <circle class="t4" cx="25" cy="25" r="16"></circle>
+            <circle class="t3" cx="125" cy="25" r="16"></circle>
+            <circle class="t2" cx="225" cy="25" r="16"></circle>
+            <circle class="t1" cx="325" cy="25" r="16"></circle>
+          </svg>
+          <div class="tokenswap fragment" data-fragment-index="1" data-swaps="4,3 4,2 4,1 3,2 3,1 2,1"></div>
+        </section>
+        <section>
+          <h2>History</h2>
+          <ul>
+            <li>Studied in discrete mathematics, theoretical computer science, network engineering, robot motion planning, game theory</li>
+            <li><cite>Cayley [1849]</cite> solved <b>clique</b> version</li>
+            <li><cite>Knuth [1968]</cite> solved <b>path</b> version</li>
+            <li>Also solved for cycles, stars, brooms, bicliques <!--, complete split graphs--></li>
+          </ul>
+          <ul class="fragment">
+            <li><b>NP-complete</b> <cite>[Amir &amp; Porat 2015]</cite></li>
+            <li><b>APX-complete</b> with <b>4-approximation</b> <br> <cite>[Miltzow et al. 2016]</cite></li>
+            <li><b>W[1]-hard</b> with respect to number of swaps <cite>[Bonnet et al. 2018]</cite></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Token Swapping in Trees</h2>
+          <svg class="r-stretch" viewBox="-10 -10 370 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="65"></line>
+            <line x1="50" y1="125" x2="100" y2="85"></line>
+            <line x1="150" y1="75" x2="200" y2="75"></line>
+            <line x1="300" y1="25" x2="250" y2="65"></line>
+            <line x1="300" y1="125" x2="250" y2="85"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="0" y="100" width="50" height="50"></rect>
+            <rect class="t3" x="100" y="50" width="50" height="50"></rect>
+            <rect class="t4" x="200" y="50" width="50" height="50"></rect>
+            <rect class="t5" x="300" y="0" width="50" height="50"></rect>
+            <rect class="t6" x="300" y="100" width="50" height="50"></rect>
+            <circle class="t5" cx="25" cy="25" r="16"></circle>
+            <circle class="t1" cx="25" cy="125" r="16"></circle>
+            <circle class="t6" cx="125" cy="75" r="16"></circle>
+            <circle class="t4" cx="225" cy="75" r="16"></circle>
+            <circle class="t2" cx="325" cy="25" r="16"></circle>
+            <circle class="t3" cx="325" cy="125" r="16"></circle>
+          </svg>
+          <!--.tokenswap.fragment(data-swaps="2,4 2,6 2,1 1,5 3,6 3,5 4,5")-->
+          <div class="tokenswap fragment" data-swaps="2,4"></div>
+          <div class="tokenswap fragment" data-swaps="2,6"></div>
+          <div class="tokenswap fragment" data-swaps="2,1"></div>
+          <div class="tokenswap fragment" data-swaps="1,5"></div>
+          <div class="tokenswap fragment" data-swaps="3,6"></div>
+          <div class="tokenswap fragment" data-swaps="3,5"></div>
+          <div class="tokenswap fragment" data-swaps="4,5"></div>
+        </section>
+        <section>
+          <h2>History: Trees</h2>
+          <ul>
+            <li><cite>Akers &amp; Krishnamurthy [1989]</cite> first studied <b>tree</b> version as routing in proposed network topology</li>
+            <li>Three <b>2-approximation</b> algorithms <br> <cite>[Akers &amp; Krishnamurthy 1989; Vaughan 1991; Yamanaka et al. 2015]</cite></li>
+            <li>Family of algorithms (including past algorithms) cannot beat $4 \over 3$-approximation <cite>[Biniaz et al. 2019]</cite></li>
+            <li><u>OPEN</u>: NP-hard?</li>
+            <li><u>OPEN</u>: Better approximation?</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Our Results</h2>
+          <ul>
+            <li>Token swapping is <b>NP-hard on trees</b>
+              <ul>
+                <li>Also for <b>parallel</b> token swapping, where we can swap a matching in each round</li>
+              </ul>
+            </li>
+            <li>Family of algorithms (including past algorithms) cannot beat 2-approximation</li>
+          </ul>
+          <svg class="r-stretch" viewBox="-10 -10 370 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="65"></line>
+            <line x1="50" y1="125" x2="100" y2="85"></line>
+            <line x1="150" y1="75" x2="200" y2="75"></line>
+            <line x1="300" y1="25" x2="250" y2="65"></line>
+            <line x1="300" y1="125" x2="250" y2="85"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="0" y="100" width="50" height="50"></rect>
+            <rect class="t3" x="100" y="50" width="50" height="50"></rect>
+            <rect class="t4" x="200" y="50" width="50" height="50"></rect>
+            <rect class="t5" x="300" y="0" width="50" height="50"></rect>
+            <rect class="t6" x="300" y="100" width="50" height="50"></rect>
+            <circle class="t5" cx="25" cy="25" r="16"></circle>
+            <circle class="t1" cx="25" cy="125" r="16"></circle>
+            <circle class="t6" cx="125" cy="75" r="16"></circle>
+            <circle class="t4" cx="225" cy="75" r="16"></circle>
+            <circle class="t2" cx="325" cy="25" r="16"></circle>
+            <circle class="t3" cx="325" cy="125" r="16"></circle>
+          </svg>
+        </section>
+        <section>
+          <h2>Happy Leaf Conjecture</h2>
+          <ul>
+            <li><u>Conjecture</u>: <cite>[Vaughan 1991]</cite> Never need to swap a token that's already at destination leaf</li>
+            <li class="fragment" data-fragment-index="1"><u>Counterexample</u>: <cite>[Biniaz et al. 2019]</cite> <br> (smallest possible)</li>
+          </ul>
+          <svg class="fragment" data-fragment-index="1" viewBox="-10 -10 870 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="25"></line>
+            <line x1="150" y1="25" x2="200" y2="25"></line>
+            <line x1="250" y1="25" x2="300" y2="25"></line>
+            <line x1="350" y1="25" x2="400" y2="25"></line>
+            <line x1="450" y1="25" x2="500" y2="25"></line>
+            <line x1="550" y1="25" x2="600" y2="25"></line>
+            <line x1="650" y1="25" x2="700" y2="25"></line>
+            <line x1="750" y1="25" x2="800" y2="25"></line>
+            <line x1="225" y1="50" x2="225" y2="100"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="100" y="0" width="50" height="50"></rect>
+            <rect class="t3" x="200" y="0" width="50" height="50"></rect>
+            <rect class="t4" x="300" y="0" width="50" height="50"></rect>
+            <rect class="t5" x="400" y="0" width="50" height="50"></rect>
+            <rect class="t6" x="500" y="0" width="50" height="50"></rect>
+            <rect class="t7" x="600" y="0" width="50" height="50"></rect>
+            <rect class="t8" x="700" y="0" width="50" height="50"></rect>
+            <rect class="t9" x="800" y="0" width="50" height="50"></rect>
+            <rect class="t10" x="200" y="100" width="50" height="50"></rect>
+            <circle class="t9" cx="25" cy="25" r="16"></circle>
+            <circle class="t8" cx="125" cy="25" r="16"></circle>
+            <circle class="t7" cx="225" cy="25" r="16"></circle>
+            <circle class="t6" cx="325" cy="25" r="16"></circle>
+            <circle class="t5" cx="425" cy="25" r="16"></circle>
+            <circle class="t4" cx="525" cy="25" r="16"></circle>
+            <circle class="t3" cx="625" cy="25" r="16"></circle>
+            <circle class="t2" cx="725" cy="25" r="16"></circle>
+            <circle class="t1" cx="825" cy="25" r="16"></circle>
+            <circle class="t10" cx="225" cy="125" r="16"></circle>
+          </svg>
+          <div class="tokenswap fragment" data-swaps="10,7 10,8 10,9"></div>
+          <div class="tokenswap fragment" data-swaps="9,8 9,6 9,5 9,4 9,3 9,2 9,1"></div>
+          <div class="tokenswap fragment" data-swaps="8,6 8,5 8,4 8,3 8,2 8,1"></div>
+          <div class="tokenswap fragment" data-swaps="7,5 7,4 7,3 7,2 7,1"></div>
+          <div class="tokenswap fragment" data-swaps="6,4 6,3 6,2 6,1"></div>
+          <div class="tokenswap fragment" data-swaps="5,3 5,2 5,1"></div>
+          <div class="tokenswap fragment" data-swaps="4,2 4,1"></div>
+          <div class="tokenswap fragment" data-swaps="1,2 1,10 2,10 3,10"></div>
+          <ul>
+            <li class="fragment">Any algorithm satisfying conjecture cannot beat $4 \over 3$-approximation <cite>[Biniaz et al. 2019]</cite></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Our Results</h2>
+          <ul>
+            <li><span class="fragment highlight-green">Token swapping is <b>NP-hard on trees</b></span>
+              <ul>
+                <li>Also for <b>parallel</b> token swapping, where we can swap a matching in each round</li>
+              </ul>
+            </li>
+            <li>Algorithms that stay <b>within 1 of shortest path</b> cannot beat 2-approximation</li>
+          </ul>
+          <svg class="r-stretch" viewBox="-10 -10 370 170" style="padding-top:0.5rem">
+            <line x1="50" y1="25" x2="100" y2="65"></line>
+            <line x1="50" y1="125" x2="100" y2="85"></line>
+            <line x1="150" y1="75" x2="200" y2="75"></line>
+            <line x1="300" y1="25" x2="250" y2="65"></line>
+            <line x1="300" y1="125" x2="250" y2="85"></line>
+            <rect class="t1" x="0" y="0" width="50" height="50"></rect>
+            <rect class="t2" x="0" y="100" width="50" height="50"></rect>
+            <rect class="t3" x="100" y="50" width="50" height="50"></rect>
+            <rect class="t4" x="200" y="50" width="50" height="50"></rect>
+            <rect class="t5" x="300" y="0" width="50" height="50"></rect>
+            <rect class="t6" x="300" y="100" width="50" height="50"></rect>
+            <circle class="t5" cx="25" cy="25" r="16"></circle>
+            <circle class="t1" cx="25" cy="125" r="16"></circle>
+            <circle class="t6" cx="125" cy="75" r="16"></circle>
+            <circle class="t4" cx="225" cy="75" r="16"></circle>
+            <circle class="t2" cx="325" cy="25" r="16"></circle>
+            <circle class="t3" cx="325" cy="125" r="16"></circle>
+          </svg>
+          <!--.tokenswap.fragment(data-fragment-index="1", data-swaps="2,4 2,6 2,1 1,5 3,6 3,5 4,5")-->
+        </section>
+      </div>
+    </div>
+    <script>
+      (function() {
+  Reveal.initialize({
+    center: false,
+    slideNumber: true,
+    hash: true,
+    transition: 'none',
+    width: 1100,
+    height: 768,
+    minScale: 0.1,
+    maxScale: 10,
+    plugins: [RevealChalkboard],
+    chalkboard: {
+      background: ['none', 'node_modules/reveal.js-plugins/chalkboard/img/blackboard.png'],
+      boardmarkerWidth: 7,
+      colorButtons: true,
+      theme: 'whiteboard'
+    }
+  });
+
+  renderMathInElement(document.body, {
+    delimiters: [
+      {
+        left: "$$",
+        right: "$$",
+        display: true
+      }, {
+        left: "$",
+        right: "$",
+        display: false
+      }
+    ]
+  });
+
+}).call(this);
+      (function() {
+  var animateSwaps, swapDelay, swapDuration, timeline;
+
+  swapDuration = 500;
+
+  swapDelay = 100;
+
+
+  /*
+  initCircles = ->
+    ## Remember original location of all circles
+    for elt in document.querySelectorAll 'circle'
+      continue if elt.hasAttribute 'data-cx'
+      elt.setAttribute 'data-cx', elt.getAttribute 'cx'
+      elt.setAttribute 'data-cy', elt.getAttribute 'cy'
+   */
+
+  timeline = null;
+
+  animateSwaps = function(swaps, reverse) {
+    var centers, count, i, j, k, len, ref, ref1, ref2, ref3, results, swap, ti, tj;
+    swaps = swaps.split(/\s+/);
+    if (reverse) {
+      swaps.reverse();
+    }
+    centers = {};
+    if (timeline != null) {
+      timeline.finish();
+    }
+    timeline = new SVG.Timeline;
+    results = [];
+    for (count = k = 0, len = swaps.length; k < len; count = ++k) {
+      swap = swaps[count];
+      if (!swap) {
+        continue;
+      }
+      ref = swap.split(','), i = ref[0], j = ref[1];
+      i = parseInt(i);
+      j = parseInt(j);
+      if (isNaN(i) || isNaN(j)) {
+        console.warn("Invalid swap " + swap);
+        continue;
+      }
+      ti = SVG("section.present circle.t" + i);
+      tj = SVG("section.present circle.t" + j);
+      if (!((ti != null) && (tj != null))) {
+        continue;
+      }
+      ti.timeline(timeline);
+      tj.timeline(timeline);
+      if (centers[i] == null) {
+        centers[i] = [ti.cx(), ti.cy()];
+      }
+      if (centers[j] == null) {
+        centers[j] = [tj.cx(), tj.cy()];
+      }
+      ref1 = [centers[j], centers[i]], centers[i] = ref1[0], centers[j] = ref1[1];
+      (ref2 = ti.animate(swapDuration, swapDelay, 'after')).center.apply(ref2, centers[i]);
+      results.push((ref3 = tj.animate(swapDuration, -swapDuration, 'after')).center.apply(ref3, centers[j]));
+    }
+    return results;
+  };
+
+  Reveal.on('fragmentshown', function(e) {
+    if (!e.fragment.classList.contains('tokenswap')) {
+      return;
+    }
+    return animateSwaps(e.fragment.dataset.swaps, false);
+  });
+
+  Reveal.on('fragmenthidden', function(e) {
+    if (!e.fragment.classList.contains('tokenswap')) {
+      return;
+    }
+    return animateSwaps(e.fragment.dataset.swaps, true);
+  });
+
+}).call(this);
+
+    </script>
+  </body>
+</html>
