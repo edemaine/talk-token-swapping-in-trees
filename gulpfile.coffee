@@ -28,7 +28,7 @@ deploySet = [
   './node_modules/katex/dist/fonts/*.woff2'
   './node_modules/reveal.js/dist/reveal.css'
   './node_modules/reveal.js/dist/theme/black.css'
-  './node_modules/reveal.js-plugins/chalkboard/palette.css'
+  './node_modules/reveal.js-plugins/chalkboard/style.css'
   './node_modules/reveal.js-plugins/chalkboard/img/sponge.png'
   './node_modules/reveal.js-plugins/chalkboard/img/boardmarker-black.png'
   './node_modules/reveal.js-plugins/chalkboard/img/blackboard.png'
