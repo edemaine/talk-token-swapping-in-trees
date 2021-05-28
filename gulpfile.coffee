@@ -39,8 +39,7 @@ deploySet = [
 
 ## npm run dist / npx gulp dist: copy just needed files to `dist` directory
 ## (for testing before deploy)
-exports.dist = dist = ->
-  pug()
+exports.dist = gulp.series pug, copy = ->
   gulp.src deploySet, base: './'
   .pipe gulp.dest './dist/',
     mode: 0o644
@@ -48,8 +47,7 @@ exports.dist = dist = ->
 
 ## npm run deploy / npx gulp deploy: deploy needed files to `gh-pages` branch
 ## (thereby deploying to GitHub Pages)
-exports.deploy = deploy = ->
-  pug()
+exports.deploy = gulp.series pug, deploy = ->
   gulp.src deploySet, base: './'
   .pipe gulpGhPages()
 
