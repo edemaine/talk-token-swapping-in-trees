@@ -35,6 +35,14 @@ deploySet = [
   './node_modules/reveal.js-plugins/menu/font-awesome/css/all.css'
   './node_modules/reveal.js-plugins/menu/font-awesome/webfonts/fa-solid-900.woff2'
   './node_modules/katex/dist/katex.css'
+  './node_modules/@fontsource/merriweather/latin-400.css'
+  './node_modules/@fontsource/merriweather/latin-400-italic.css'
+  './node_modules/@fontsource/merriweather/latin-900.css'
+  './node_modules/@fontsource/merriweather/latin-900-italic.css'
+  './node_modules/@fontsource/merriweather/files/merriweather-latin-400-normal.woff2'
+  './node_modules/@fontsource/merriweather/files/merriweather-latin-400-italic.woff2'
+  './node_modules/@fontsource/merriweather/files/merriweather-latin-900-normal.woff2'
+  './node_modules/@fontsource/merriweather/files/merriweather-latin-900-italic.woff2'
 ]
 
 ## npm run dist / npx gulp dist: copy just needed files to `dist` directory

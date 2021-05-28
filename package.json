@@ -11,6 +11,7 @@
   "author": "Erik Demaine",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/merriweather": "^4.4.0",
     "@svgdotjs/svg.js": "^3.0.16",
     "katex": "^0.13.11",
     "reveal.js": "^4.1.1",
