@@ -30,7 +30,7 @@ deploySet = [
   './node_modules/reveal.js/dist/theme/black.css'
   './node_modules/reveal.js-plugins/chalkboard/style.css'
   './node_modules/reveal.js-plugins/chalkboard/img/sponge.png'
-  './node_modules/reveal.js-plugins/chalkboard/img/boardmarker-black.png'
+  './node_modules/reveal.js-plugins/chalkboard/img/boardmarker-*.png'
   './node_modules/reveal.js-plugins/chalkboard/img/blackboard.png'
   './node_modules/reveal.js-plugins/menu/font-awesome/css/all.css'
   './node_modules/reveal.js-plugins/menu/font-awesome/webfonts/fa-solid-900.woff2'
