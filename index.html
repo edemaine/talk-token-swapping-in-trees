@@ -17,23 +17,11 @@
     <link rel="stylesheet" href="node_modules/@fontsource/merriweather/latin-900-italic.css">
     <link rel="stylesheet" href="node_modules/katex/dist/katex.css">
     <style>:root {
-  --main-font: Merriweather, serif;
-  --heading-font: Merriweather, serif;
-}
-.reveal {
-  font-family: var(--main-font);
-}
-.reveal ::selection {
-  background: #444;
-}
-.reveal h1,
-.reveal h2,
-.reveal h3,
-.reveal h4,
-.reveal h5,
-.reveal h6 {
-  font-family: var(--heading-font);
-  text-transform: none;
+  --r-main-font: Merriweather, serif;
+  --r-heading-font: Merriweather, serif;
+  --r-heading-text-transform: none;
+  --r-background-color: #000;
+  --r-selection-background-color: #444;
 }
 .reveal .slides section .fragment {
   opacity: 0;
@@ -44,9 +32,6 @@
 .reveal .slides section .fragment.visible {
   opacity: 1;
   visibility: inherit;
-}
-.reveal-viewport {
-  background: #000;
 }
 cite {
   color: #c0a5c0;
