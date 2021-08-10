@@ -15,13 +15,13 @@ See the paper for more details about the results.
 This repository serves as a demo of an approach to making slides
 by combining the following technology (all free and open source):
 
-* [RevealJS](https://revealjs.com/): a flexible HTML presentation framework,
+* [reveal.js](https://revealjs.com/): a flexible HTML presentation framework,
   extendable by plugins and themes.  Here we use:
   * [Chalkboard](https://github.com/rajgoel/reveal.js-plugins/tree/master/chalkboard):
     enables live drawing annotation on the slides (using pen or touch or mouse)
   * [Merriweather](https://fonts.google.com/specimen/Merriweather) font
 * [Pug](https://pugjs.org/): a concise indentation-based notation for HTML,
-  which makes it easier to express RevealJS slides,
+  which makes it easier to express reveal.js slides,
   and to mix together other languages.  Here we use:
   * [Stylus](https://stylus-lang.com/): a concise indentation-based notation
     for CSS (styling of HTML)
@@ -47,7 +47,7 @@ Here's an overview of the individual files and what they do:
   ```pug
   .tokenswap.fragment(data-swaps="4,3 4,2 4,1 3,2 3,1 2,1")
   ```
-* [`index.styl`](index.styl): Some custom RevealJS styling,
+* [`index.styl`](index.styl): Some custom reveal.js styling,
   and specific SVG styling for the figures and animations.
   (Check out the cool glow/shadow effects!)
 * [`cayley4.png`](cayley4.png): [Image from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Symmetric_group_4;_Cayley_graph_1,2,6_(1-based).png), licensed under CC-BY-SA
