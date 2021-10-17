@@ -1,12 +1,20 @@
 gulp = require 'gulp'
+gulpCoffee = require 'gulp-coffee'
 gulpPug = require 'gulp-pug'
 gulpChmod = require 'gulp-chmod'
 gulpGhPages = require 'gulp-gh-pages'
 
-## npm run build / npx gulp pug: builds index.html from index.pug etc.
+## npx gulp pug: builds index.html from index.pug etc.
 exports.pug = pug = ->
   gulp.src 'index.pug'
   .pipe gulpPug pretty: true
+  .pipe gulpChmod 0o644
+  .pipe gulp.dest './'
+
+## npx gulp coffee: builds yinyang.js from yinyang.coffee
+exports.coffee = coffee = ->
+  gulp.src '*.coffee', ignore: 'gulpfile.coffee'
+  .pipe gulpCoffee()
   .pipe gulpChmod 0o644
   .pipe gulp.dest './'
 
@@ -14,11 +22,15 @@ exports.pug = pug = ->
 exports.watch = watch = ->
   gulp.watch '*.pug', ignoreInitial: false, pug
   gulp.watch '*.styl', pug
-  gulp.watch '*.coffee', pug
+  gulp.watch '*.coffee',
+    ignored: 'gulpfile.coffee'
+    ignoreInitial: false
+  , coffee
 
 deploySet = [
   './.nojekyll'
   './index.html'
+  './tokenswap.js'
   './cayley4.png'
   './node_modules/reveal.js/dist/reveal.js'
   './node_modules/reveal.js-plugins/chalkboard/plugin.js'
@@ -45,9 +57,12 @@ deploySet = [
   './node_modules/@fontsource/merriweather/files/merriweather-latin-900-italic.woff2'
 ]
 
+## npm run build / npx gulp: build index.html and yinyang.js
+exports.build = exports.default = build = gulp.parallel pug, coffee
+
 ## npm run dist / npx gulp dist: copy just needed files to `dist` directory
 ## (for testing before deploy)
-exports.dist = dist = gulp.series pug, copy = ->
+exports.dist = dist = gulp.series build, copy = ->
   gulp.src deploySet, base: './'
   .pipe gulp.dest './dist/',
     mode: 0o644
@@ -58,5 +73,3 @@ exports.dist = dist = gulp.series pug, copy = ->
 exports.deploy = deploy = gulp.series dist, deploy = ->
   gulp.src deploySet, base: './'
   .pipe gulpGhPages()
-
-exports.default = pug
