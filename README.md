@@ -10,10 +10,11 @@ See the paper for more details about the results.
 
 [![Title slide](title_slide.jpg)](https://edemaine.github.io/talk-token-swapping-in-trees/)
 
-## Technology
+## Technology: reveal.js + Pug + Stylus + CoffeeScript + SVG.js + KaTeX
 
-This repository serves as a demo of an approach to making slides
-by combining the following technology (all free and open source):
+This repository uses the
+[reveal-pug-talk template](https://github.com/edemaine/reveal-pug-talk)
+to make slides by combining the following technology (all free and open source):
 
 * [reveal.js](https://revealjs.com/): a flexible HTML presentation framework,
   extendable by plugins and themes.  Here we use:
